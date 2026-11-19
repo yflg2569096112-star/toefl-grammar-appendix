@@ -1255,5 +1255,16 @@ html.no-flex-gap .fw-act>*{margin-right:10px;margin-bottom:10px;}
 html.no-flex-gap #annoBar{gap:0;}
 html.no-flex-gap #annoBar>*+*{margin-left:6px;}
 </style>
+
+<style id="portrait-reading-hint">
+#portraitHint{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:5001;align-items:center;justify-content:center;padding:20px;background:rgba(14,17,36,.94);color:#fff;font:500 16px/1.6 var(--sans);text-align:center}
+#portraitHint .card{width:100%;max-width:320px;padding:22px 20px;border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 12px 36px rgba(0,0,0,.3)}
+#portraitHint h2{font-size:20px;line-height:1.3;margin:0 0 10px}
+#portraitHint p{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+#portraitHint button{margin-top:16px;min-height:44px;padding:0 18px;border:0;border-radius:12px;background:var(--amber);color:var(--ink);font:700 15px/1 var(--sans)}
+</style>
+<div id="portraitHint" role="dialog" aria-live="polite"><div class="card"><h2>建议横屏打开</h2><p>这套课件按横向 16:9 编排。手机竖屏时，题目和排序词块会缩得很小；旋转到横屏后会更清晰。</p><button id="portraitContinue" type="button">仍在竖屏浏览</button></div></div>
+<script>(function(){var hint=document.getElementById('portraitHint'),button=document.getElementById('portraitContinue'),dismissed=false;if(!hint)return;function update(){var portrait=window.innerWidth<=600&&window.innerHeight>window.innerWidth;hint.style.display=portrait&&!dismissed?'flex':'none'}if(button)button.addEventListener('click',function(){dismissed=true;hint.style.display='none'});window.addEventListener('resize',update);window.addEventListener('orientationchange',update);update()})();</script>
+
 </body>
 </html>
